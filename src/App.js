@@ -8,12 +8,12 @@ import Container from "react-bootstrap/Container";
 
 function App() {
 
-    const [inputValue, setInputValue] = useState("");
+    const [todoValue, settodoValue] = useState("");
 
     const handleAddClick = () => {
-        console.log("### inputValue", inputValue);
+        console.log("### todoValue", todoValue);
 
-        setInputValue("");
+        settodoValue("");
     };
 
     return (
@@ -24,8 +24,8 @@ function App() {
                         type="text"
                         placeholder="할일을 입력하세요"
                         className="input-box"
-                        value={inputValue}
-                        onChange={(event) => { setInputValue(event.target.value) }}
+                        value={todoValue}
+                        onChange={(event) => { settodoValue(event.target.value) }}
                     />
                 </Col>
                 <Col xs={12} sm={2}>
