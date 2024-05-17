@@ -48,6 +48,16 @@ function App() {
         }
     };
 
+    // 할일 삭제 함수
+    const deleteTask = async (taskId) => {
+        try {
+            await axios.delete(`/tasks/${taskId}`)
+            getTasks();
+        } catch (error) {
+            console.error('할일 삭제에 실패했습니다:', error);
+        }
+    }
+
     // 추가 버튼 클릭 시 이벤트 핸들러
     const handleAddClick = () => {
         console.log("### todoValue", todoValue);
@@ -72,8 +82,8 @@ function App() {
                 </Col>
             </Row>
 
-            {/* tasks데이터와 updateTask함수 전달 */}
-            <TodoBoard tasks={tasks} updateTask={updateTask} />
+            {/* tasks데이터와 updateTask, deleteTask함수 전달 */}
+            <TodoBoard tasks={tasks} updateTask={updateTask} deleteTask={deleteTask} />
         </Container>
     );
 }

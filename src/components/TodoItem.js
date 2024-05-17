@@ -1,11 +1,14 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 
-const TodoItem = ({ tasksData, updateTask }) => {
+const TodoItem = ({ tasksData, updateTask, deleteTask }) => {
 
     const handleCheckboxChange = (taskId, isChecked) => {
-        // 해당 taskId에 해당하는 할일의 isComplete 값을 업데이트
         updateTask(taskId, isChecked);
+    };
+
+    const handleDeleteClick = (taskId) => {
+        deleteTask(taskId);
     };
 
     return (
@@ -20,7 +23,7 @@ const TodoItem = ({ tasksData, updateTask }) => {
                         />
                         <div className="todo-content">{todo.task}</div>
                         <div>
-                            <button className="button-delete">삭제</button>
+                            <button className="button-delete" onClick={() => handleDeleteClick(todo._id)}>삭제</button>
                         </div>
                     </div>
                 ))}
