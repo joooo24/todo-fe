@@ -33,7 +33,7 @@ const todoReducer = (state = initialState, action) => {
                 ...state,
                 tasks: state.tasks.map((task) =>
                     // 만약 taskId가 payload의 taskId와 일치한다면 해당 할일을 업데이트하고, 그렇지 않으면 그대로 유지
-                    task.id === payload.taskId
+                    task._id === payload.taskId
                         ? { ...task, isComplete: payload.isChecked }
                         : task
                 ),
@@ -44,7 +44,7 @@ const todoReducer = (state = initialState, action) => {
             // 기존 상태(state)의 tasks 배열에서 payload의 taskId에 해당하는 할일을 필터링하여 제거한 후 반환
             return {
                 ...state,
-                tasks: state.tasks.filter((task) => task.id !== payload),
+                tasks: state.tasks.filter((task) => task._id !== payload),
             };
         default:
             return state;
