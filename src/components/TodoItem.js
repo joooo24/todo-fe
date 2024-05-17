@@ -1,21 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "./../utils/api";
 import { Col, Row } from "react-bootstrap";
 
 const TodoItem = () => {
-  return (
-    <Row>
-      <Col xs={12}>
-        <div className={`todo-item`}>
-          <div className="todo-content">밥먹기</div>
+    const [todoData, setTodoData] = useState([]);
 
-          <div>
-            <button className="button-delete">삭제</button>
-            <button className="button-delete">끝남</button>
-          </div>
-        </div>
-      </Col>
-    </Row>
-  );
+    const getTasks = async () => {
+        try {
+            const response = await axios.get("/tasks");
+            console.log("### response", response.data.data);
+
+            setTodoData(response.data.data);
+        } catch (error) {
+            console.error('Failed to fetch todo data:', error);
+        }
+    };
+
+    useEffect(() => {
+        getTasks();
+    }, []);
+
+    useEffect(() => {
+        console.log("### todoData", todoData);
+    }, [todoData]);
+
+    return (
+        <Row>
+            <Col xs={12}>
+                {todoData.map(todo => (
+                    <div className="todo-item" key={todo.id}>
+                        <input type="checkbox" checked={todo.isComplete}/>
+                        <div className="todo-content">{todo.task}</div>
+                        <div>
+                            <button className="button-delete">삭제</button>
+                        </div>
+                    </div>
+                ))}
+            </Col>
+        </Row>
+    );
 };
 
 export default TodoItem;
