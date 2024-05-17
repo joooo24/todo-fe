@@ -5,8 +5,6 @@ const TodoItem = ({ tasksData, updateTask }) => {
 
     const handleCheckboxChange = (taskId, isChecked) => {
         // 해당 taskId에 해당하는 할일의 isComplete 값을 업데이트
-        console.log("### taskId", taskId)
-        console.log("### isChecked", isChecked)
         updateTask(taskId, isChecked);
     };
 
@@ -14,7 +12,7 @@ const TodoItem = ({ tasksData, updateTask }) => {
         <Row>
             <Col xs={12}>
                 {tasksData.map((todo) => (
-                    <div className="todo-item" key={todo._id}>
+                    <div className={`todo-item ${todo.isComplete ? 'complete' : ''}`} key={todo._id}>
                         <input
                             type="checkbox"
                             checked={todo.isComplete}
