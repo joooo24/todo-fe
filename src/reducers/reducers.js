@@ -1,6 +1,6 @@
 // reducers.js
 
-import { ADD_TASK, UPDATE_TASK, DELETE_TASK } from "./../actions/actions";
+import { ADD_TASK, UPDATE_TASK, DELETE_TASK, SET_TASKS } from "./../actions/actions";
 
 const initialState = {
     tasks: [],
@@ -11,6 +11,13 @@ const todoReducer = (state = initialState, action) => {
     let { type, payload } = action;
 
     switch (type) {
+        // 할일 목록 설정
+        case SET_TASKS:
+            return {
+                ...state,
+                tasks: payload,
+            };
+
         // 추가
         case ADD_TASK:
             // 기존 상태(state)의 tasks 배열에 새로운 할일(payload) 추가하여 반환
@@ -39,7 +46,6 @@ const todoReducer = (state = initialState, action) => {
                 ...state,
                 tasks: state.tasks.filter((task) => task.id !== payload),
             };
-
         default:
             return state;
     }
