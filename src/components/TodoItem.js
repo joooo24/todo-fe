@@ -1,14 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Col, Row } from "react-bootstrap";
+import { updateTask, deleteTask } from "./../actions/actions";
 
-const TodoItem = ({ tasksData, updateTask, deleteTask }) => {
+const TodoItem = ({ tasksData }) => {
+    const dispatch = useDispatch();
 
     const handleCheckboxChange = (taskId, isChecked) => {
-        updateTask(taskId, isChecked);
+        dispatch(updateTask(taskId, isChecked));
     };
 
     const handleDeleteClick = (taskId) => {
-        deleteTask(taskId);
+        dispatch(deleteTask(taskId));
     };
 
     return (
