@@ -1,69 +1,111 @@
 body {
-    color: lightblue !important;
+    color: lightskyblue !important;
     background-color: aliceblue !important;
 }
 
+.todo-container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
 .todo-item {
-    border: 1px solid lightblue;
+    border: 1px solid lightskyblue;
     background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 16px;
+    border-bottom: 0;
+
+    &:last-child {
+        border-bottom: 1px solid lightskyblue;
+    }
+
+    &.complete {
+        background-color: #f0f0f0;
+        text-decoration: line-through;
+    }
+
+    input[type="checkbox"] {
+        /* background: url("~/assets/images/common/input/check_empty.svg") no-repeat center / contain; */
+        width: 20px;
+        height: 20px;
+        margin-right: 16px;
+        cursor: pointer;
+    }
+
+    .button-delete {
+        background-color: white;
+        border: 1px solid rgb(250, 135, 135);
+        color: rgb(250, 135, 135);
+
+        &:hover {
+            background-color: #333;
+            border: 1px solid #333;
+            color: #ffffff;
+        }
+    }
 }
 
-.todo-item.complete{
-    background-color: #eee;
-    text-decoration: line-through;
+.add-item-wrap {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .input-box {
+        padding: 10px;
+        width: 100%;
+        border: 1px solid lightblue;
+        margin-right: 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .button-add {
+        height: 46px;
+        width: 120px;
+        border: none;
+        background-color: lightblue;
+        color: white;
+
+        &:hover {
+            background-color: lightskyblue;
+            color: white;
+        }
+    }
+
 }
 
 .todo-content {
-    padding: 1em
+    flex: 1;
+    text-align: left;
 }
 
-.add-item-row {
-    margin-top: 50px !important;
-    margin-bottom: 30px;
+@media (max-width: 1024px) {
+    .todo-container {
+        padding: 16px;
+    }
 }
 
-.input-box {
-    padding: 10px;
-    width: 100%;
-    border: 1px solid lightblue;
+@media (max-width: 768px) {
+    .add-item-wrap {
+        margin-top: 50px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
 
+        .input-box {
+            margin-right: 0;
+        }
 
-}
-
-.input-box:focus {
-    outline: none;
-}
-
-.button-add {
-    height: 40px;
-    width: 100%;
-    border: none;
-    background-color: lightblue;
-    color: white;
-}
-
-.button-add:hover {
-    background-color: white;
-    color: lightblue;
-    border: 2px solid lightblue;
-}
-
-.button-delete {
-    background-color: white;
-    border: 2px solid lightblue;
-    color: lightblue;
-    margin: 10px;
-}
-
-.button-delete:hover {
-    background-color: lightblue;
-    color: #ffffff;
-}
-
-.item-complete {
-    background-color: gainsboro;
-    color: white;
+        .button-add {
+            width: 100%;
+        }
+    }
 }

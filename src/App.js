@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import TodoBoard from "./components/TodoBoard";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
 import axios from "./utils/api";
 
 function App() {
@@ -66,25 +63,21 @@ function App() {
     };
 
     return (
-        <Container>
-            <Row className="add-item-row">
-                <Col xs={12} sm={10}>
-                    <input
-                        type="text"
-                        placeholder="할일을 입력하세요"
-                        className="input-box"
-                        value={todoValue}
-                        onChange={(event) => { setTodoValue(event.target.value) }}
-                    />
-                </Col>
-                <Col xs={12} sm={2}>
-                    <button className="button-add" onClick={handleAddClick}>추가</button>
-                </Col>
-            </Row>
+        <div className="todo-container">
+            <div className="add-item-wrap">
+                <input
+                    type="text"
+                    placeholder="할일을 입력하세요"
+                    className="input-box"
+                    value={todoValue}
+                    onChange={(event) => { setTodoValue(event.target.value) }}
+                />
+                <button className="button-add" onClick={handleAddClick}>추가</button>
+            </div>
 
             {/* tasks데이터와 updateTask, deleteTask함수 전달 */}
             <TodoBoard tasks={tasks} updateTask={updateTask} deleteTask={deleteTask} />
-        </Container>
+        </div>
     );
 }
 
