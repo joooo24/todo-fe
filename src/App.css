@@ -1,14 +1,6 @@
-/* .noto-sans-kr {
-  font-family: "Noto Sans KR", sans-serif;
-}
-
-.orbit-regular {
+/* font-family: "Noto Sans KR", sans-serif;
   font-family: "Orbit", sans-serif;
-}
-
-.black-han-sans-regular {
-  font-family: "Black Han Sans", sans-serif;
-} */
+  font-family: "Black Han Sans", sans-serif; */
 
 body {
     color: lightskyblue !important;
@@ -25,7 +17,6 @@ body {
     max-width: 1024px;
     margin: 0 auto;
 }
-
 
 .add-item-wrap {
     margin-top: 50px;
@@ -110,6 +101,20 @@ body {
 .todo-content {
     flex: 1;
     text-align: left;
+}
+
+/* 회원가입/로그인 */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .form-box {
+        max-width: 480px;
+        width: 100%;
+    }
 }
 
 @media (max-width: 1024px) {

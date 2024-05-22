@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 const LoginPage = () => {
     return (
-        <div className="display-center">
-            <Form className="login-box">
+        <div className="form-container">
+            <Form className="form-box">
                 <h1>로그인</h1>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
