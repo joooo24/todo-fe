@@ -7,9 +7,24 @@ const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        try {
+            // 비밀번호 입력 확인
+            if (password !== rePassword) {
+                throw new Error("패스워드가 일치하지 않습니다. 다시 입력해 주세요.");
+            }
+
+            // 회원가입 로직
+            console.log("회원가입 성공");
+
+        } catch (err) {
+            setError(err.message)
+            console.log("err.message", error)
+        }
     }
 
     return (
