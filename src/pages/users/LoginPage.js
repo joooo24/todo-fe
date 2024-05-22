@@ -23,7 +23,7 @@ const LoginPage = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isAlertOpen, setIsAlertOpen] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
-    const [loginUser, setLoginUser] = useState("");
+    const [loginUser, setLoginUser] = useState(null);
 
     // 모달 닫기
     const handleCloseModal = () => {
