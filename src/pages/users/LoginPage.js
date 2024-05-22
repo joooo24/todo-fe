@@ -44,7 +44,7 @@ const LoginPage = () => {
                 </Form.Group>
 
                 <div className="button-wrap">
-                    <button type="submit">로그인</button>
+                    <button type="submit" className="btn btn-submit">로그인</button>
                     <span>
                         계정이 없다면? <Link to="/register">회원가입 하기</Link>
                     </span>
