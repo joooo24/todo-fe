@@ -2,13 +2,24 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import "./users.scss";
+import api from "../../utils/api";
 
 const RegisterPage = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         // 회원가입 로직
-        console.log("회원가입 성공", data);
+        try {
+            const response = await api.post("/users", {
+                name: data.name,
+                email: data.email,
+                password: data.password
+            });
+            console.log("### 회원가입 성공", response.data);
+
+        } catch (error) {
+            console.error("### 회원가입 실패", error);
+        }
     };
 
     const password = watch("password");
