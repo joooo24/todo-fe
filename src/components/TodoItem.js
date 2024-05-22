@@ -12,7 +12,7 @@ const TodoItem = ({ tasksData, updateTask, deleteTask }) => {
     };
 
     return (
-        <Row>
+        <Row className="todo-item-wrap">
             <Col xs={12}>
                 {tasksData.map((todo) => (
                     <div className={`todo-item ${todo.isComplete ? 'complete' : ''}`} key={todo._id}>

@@ -1,11 +1,71 @@
+/* .noto-sans-kr {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.orbit-regular {
+  font-family: "Orbit", sans-serif;
+}
+
+.black-han-sans-regular {
+  font-family: "Black Han Sans", sans-serif;
+} */
+
 body {
     color: lightskyblue !important;
     background-color: aliceblue !important;
 }
 
+* {
+    font-family: "Noto Sans KR", sans-serif;
+    letter-spacing: -.5px;
+    font-weight: 400;
+}
+
 .todo-container {
     max-width: 1024px;
     margin: 0 auto;
+}
+
+
+.add-item-wrap {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .input-box {
+        padding: 10px;
+        width: 100%;
+        border: 1px solid lightblue;
+        margin-right: 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .button-add {
+        height: 46px;
+        width: 120px;
+        border: none;
+        background-color: lightblue;
+        color: white;
+
+        &:hover {
+            background-color: lightskyblue;
+            color: white;
+        }
+    }
+
+}
+
+.todo-board {
+    h2 {
+        font-family: "Orbit", sans-serif;
+        font-size: 24px;
+        margin: 0 0 10px;
+    }
 }
 
 .todo-item {
@@ -47,39 +107,6 @@ body {
     }
 }
 
-.add-item-wrap {
-    margin-top: 50px;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .input-box {
-        padding: 10px;
-        width: 100%;
-        border: 1px solid lightblue;
-        margin-right: 16px;
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    .button-add {
-        height: 46px;
-        width: 120px;
-        border: none;
-        background-color: lightblue;
-        color: white;
-
-        &:hover {
-            background-color: lightskyblue;
-            color: white;
-        }
-    }
-
-}
-
 .todo-content {
     flex: 1;
     text-align: left;
@@ -87,25 +114,26 @@ body {
 
 @media (max-width: 1024px) {
     .todo-container {
+        height: 100vh;
         padding: 16px;
     }
 }
 
 @media (max-width: 768px) {
     .add-item-wrap {
-        margin-top: 50px;
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
+        margin-top: 0;
 
         .input-box {
             margin-right: 0;
         }
 
         .button-add {
-            width: 100%;
+            width: 90px;
         }
+    }
+
+    .todo-item-wrap {
+        max-height: calc(100vh - 76px - 32px - 38.8px);
+        overflow-y: auto;
     }
 }
