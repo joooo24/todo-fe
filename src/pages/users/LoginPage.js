@@ -1,15 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./users.scss";
+import api from "../../utils/api";
+import Modal from "react-modal";
+
+const AlertModal = ({ isOpen, onClose, message }) => {
+    return (
+        <Modal isOpen={isOpen} onRequestClose={onClose}>
+            <div className="modal-wrap">
+                <h2 className="modal-title">알림</h2>
+                <p>{message}</p>
+                <button onClick={onClose} className="btn">확인</button>
+            </div>
+        </Modal>
+    );
+};
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [isAlertOpen, setIsAlertOpen] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+    const [loginUser, setLoginUser] = useState("");
 
-    const onSubmit = (data) => {
+    // 모달 닫기
+    const handleCloseModal = () => {
+        setIsAlertOpen(false);
+    };
+
+    // 모달 열기
+    const handleOpenModal = (message) => {
+        setAlertMessage(message);
+        setIsAlertOpen(true);
+    };
+
+    // 세션 스토리지에 토큰을 저장
+    const saveTokenToSessionStorage = (token) => {
+        sessionStorage.setItem('token', token);
+    };
+
+    const onSubmit = async (data) => {
         // 로그인 로직
-        console.log("로그인 성공", data);
+        try {
+            const response = await api.post("/users/login", {
+                email: data.email,
+                password: data.password
+            })
+
+            if (response.status === 200) {
+                setLoginUser(response.data.user)
+                saveTokenToSessionStorage(response.data.token)
+                console.log("### loginUser:", loginUser);
+                console.log("### loginUserToken:", sessionStorage.getItem('token'));
+                navigate(`/`);
+            }
+
+        } catch (error) {
+            handleOpenModal(`${error.message}.`);
+        }
+
+        ;
     };
 
     return (
@@ -50,6 +102,13 @@ const LoginPage = () => {
                     </span>
                 </div>
             </Form>
+
+            {/* 모달 */}
+            <AlertModal
+                isOpen={isAlertOpen}
+                onClose={handleCloseModal}
+                message={alertMessage}
+            />
         </div>
     );
 };
