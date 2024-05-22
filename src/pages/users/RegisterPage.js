@@ -1,50 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import "./users.scss";
 
 const RegisterPage = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [rePassword, setRePassword] = useState("");
-    const [error, setError] = useState("");
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const onSubmit = (data) => {
+        // 회원가입 로직
+        console.log("회원가입 성공", data);
+    };
 
-        try {
-            // 입력값 유효성 검사
-            if (!name || !email || !password || !rePassword) {
-                throw new Error("모든 필드를 입력해 주세요.");
-            }
-
-            // 비밀번호 일치 여부 확인
-            if (password !== rePassword) {
-                throw new Error("패스워드가 일치하지 않습니다. 다시 입력해 주세요.");
-            }
-
-            // 회원가입 로직
-            // setError("");
-            console.log("회원가입 성공");
-
-        } catch (err) {
-            setError(err.message)
-            console.log("### error", error)
-        }
-    }
+    const password = watch("password");
 
     return (
         <div className="form-container">
-            <Form className="form-box" onSubmit={handleSubmit}>
+            <Form className="form-box" onSubmit={handleSubmit(onSubmit)}>
                 <h1>회원가입</h1>
+
                 <Form.Group className="mb-3" controlId="formName">
                     <Form.Label>이름</Form.Label>
                     <Form.Control
-                        type="string"
+                        type="text"
                         placeholder="Name"
-                        value={name}
-                        onChange={(event) => { setName(event.target.value) }}
+                        {...register("name", { required: "이름을 입력해 주세요." })}
                     />
+                    {errors.name && <p className="error-message">{errors.name.message}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -52,9 +33,15 @@ const RegisterPage = () => {
                     <Form.Control
                         type="email"
                         placeholder="Enter email"
-                        value={email}
-                        onChange={(event) => { setEmail(event.target.value) }}
+                        {...register("email", {
+                            required: "이메일을 입력해 주세요.",
+                            pattern: {
+                                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                                message: "유효한 이메일 주소를 입력해 주세요."
+                            }
+                        })}
                     />
+                    {errors.email && <p className="error-message">{errors.email.message}</p>}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -62,19 +49,23 @@ const RegisterPage = () => {
                     <Form.Control
                         type="password"
                         placeholder="Password"
-                        value={password}
-                        onChange={(event) => { setPassword(event.target.value) }}
+                        {...register("password", { required: "비밀번호를 입력해 주세요." })}
                     />
+                    {errors.password && <p className="error-message">{errors.password.message}</p>}
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="formBasicPasswordConfirm">
                     <Form.Label>비밀번호 재입력</Form.Label>
                     <Form.Control
                         type="password"
-                        placeholder="re-enter the password"
-                        value={rePassword}
-                        onChange={(event) => { setRePassword(event.target.value) }}
+                        placeholder="Re-enter password"
+                        {...register("rePassword", {
+                            required: "비밀번호를 다시 입력해 주세요.",
+                            validate: (value) =>
+                                value === password || "패스워드가 일치하지 않습니다. 다시 입력해 주세요."
+                        })}
                     />
+                    {errors.rePassword && <p className="error-message">{errors.rePassword.message}</p>}
                 </Form.Group>
 
                 <button type="submit">회원가입</button>
