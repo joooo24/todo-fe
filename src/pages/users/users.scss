@@ -27,24 +27,6 @@
             padding-top: 6px;
             color: rgb(190, 0, 0);
         }
-
-        button {
-            width: 100%;
-            height: 46px;
-            background: rgb(0, 38, 160);
-            margin: 0;
-            padding: 0;
-            border-radius: 6px;
-            border: none;
-            color: white;
-            margin-top: 10px;
-            font-size: 18px;
-            cursor: pointer;
-
-            &:hover {
-                background: rgb(16, 70, 255);
-            }
-        }
     }
 }
 

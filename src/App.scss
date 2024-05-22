@@ -103,6 +103,56 @@ body {
     text-align: left;
 }
 
+// 모달
+.ReactModalPortal {
+    .ReactModal__Overlay.ReactModal__Overlay--after-open {
+        background: rgba(0, 0, 0, 0.65) !important;
+    }
+
+    .ReactModal__Content.ReactModal__Content--after-open {
+        max-width: 360px;
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        left: 50% !important;
+        top: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        border-radius: 10px !important;
+        text-align: center;
+    }
+
+    .modal-wrap {
+        text-align: center;
+
+        .modal-title {
+            font-size: 28px;
+        }
+    }
+}
+
+// 버튼
+button.btn {
+    width: 100%;
+    height: 40px;
+    background: rgb(0, 38, 160);
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    margin-top: 10px;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+        background: rgb(16, 70, 255);
+        color: white;
+    }
+
+    &.btn-submit {
+        height: 46px;
+    }
+}
 
 @media (max-width: 1024px) {
     .todo-container {
