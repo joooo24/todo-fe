@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "./../utils/api";
+import api from "./../utils/api";
 import TodoBoard from './../components/TodoBoard';
 
 
@@ -9,7 +9,7 @@ const TodoPage = () => {
     const [tasks, setTasks] = useState([]);
     const getTasks = async () => {
         try {
-            const response = await axios.get("/tasks");
+            const response = await api.get("/tasks");
             setTasks(response.data.data);
         } catch (error) {
             console.error('할일 목록을 불러오는 데 실패했습니다:', error);
@@ -25,7 +25,7 @@ const TodoPage = () => {
     const addTask = async () => {
         try {
             // 서버에 추가된 todoValue 값을 보냄
-            const response = await axios.post("/tasks", { task: todoValue, isComplete: false });
+            const response = await api.api("/tasks", { task: todoValue, isComplete: false });
             console.log("### addTask response", response.data.data);
             getTasks();
         } catch (error) {
@@ -37,7 +37,7 @@ const TodoPage = () => {
     const updateTask = async (taskId, isChecked) => {
         try {
             // 서버에 업데이트된 isComplete 값을 보냄
-            await axios.put(`/tasks/${taskId}`, { isComplete: isChecked });
+            await api.put(`/tasks/${taskId}`, { isComplete: isChecked });
             getTasks();
         } catch (error) {
             console.error('할일 업데이트에 실패했습니다:', error);
@@ -47,7 +47,7 @@ const TodoPage = () => {
     // 할일 삭제 함수
     const deleteTask = async (taskId) => {
         try {
-            await axios.delete(`/tasks/${taskId}`)
+            await api.delete(`/tasks/${taskId}`)
             getTasks();
         } catch (error) {
             console.error('할일 삭제에 실패했습니다:', error);
