@@ -13,17 +13,23 @@ const RegisterPage = () => {
         event.preventDefault();
 
         try {
-            // 비밀번호 입력 확인
+            // 입력값 유효성 검사
+            if (!name || !email || !password || !rePassword) {
+                throw new Error("모든 필드를 입력해 주세요.");
+            }
+
+            // 비밀번호 일치 여부 확인
             if (password !== rePassword) {
                 throw new Error("패스워드가 일치하지 않습니다. 다시 입력해 주세요.");
             }
 
             // 회원가입 로직
+            // setError("");
             console.log("회원가입 성공");
 
         } catch (err) {
             setError(err.message)
-            console.log("err.message", error)
+            console.log("### error", error)
         }
     }
 
