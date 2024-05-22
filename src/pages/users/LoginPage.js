@@ -52,10 +52,12 @@ const LoginPage = () => {
             if (response.status === 200) {
                 setLoginUser(response.data.user)
                 saveTokenToSessionStorage(response.data.token)
-                console.log("### loginUser:", loginUser);
-                console.log("### loginUserToken:", sessionStorage.getItem('token'));
+                api.defaults.headers["Authorization"] = "Bearer " + response.data.token;
+                console.log(`### api.defaults.headers["Authorization"]`, api.defaults.headers["Authorization"])
                 navigate(`/`);
             }
+
+            throw new Error(response.message);
 
         } catch (error) {
             handleOpenModal(`${error.message}.`);
