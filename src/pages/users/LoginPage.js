@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
 import { Link } from "react-router-dom";
+import "./users.scss";
 
 const LoginPage = () => {
     return (
@@ -10,12 +10,12 @@ const LoginPage = () => {
             <Form className="form-box">
                 <h1>로그인</h1>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
+                    <Form.Label>이메일</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>비밀번호</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
                 <div className="button-box">

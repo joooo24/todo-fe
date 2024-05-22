@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import "./users.scss";
 
 const RegisterPage = () => {
     return (
@@ -27,9 +27,7 @@ const RegisterPage = () => {
                     <Form.Control type="password" placeholder="re-enter the password" />
                 </Form.Group>
 
-                <Button className="button-primary" type="submit">
-                    회원가입
-                </Button>
+                <button type="submit">회원가입</button>
             </Form>
         </div>
     );

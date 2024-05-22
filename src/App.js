@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
+import RegisterPage from './pages/users/RegisterPage';
+import LoginPage from "./pages/users/LoginPage";
 import TodoPage from "./pages/TodoPage";
-import RegisterPage from "./pages/RegisterPage";
-import "./App.css";
+import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

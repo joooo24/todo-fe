@@ -3,8 +3,8 @@
   font-family: "Black Han Sans", sans-serif; */
 
 body {
-    color: lightskyblue !important;
-    background-color: aliceblue !important;
+    color: #1f1f1f !important;
+    background-color: #f9f9f9 !important;
 }
 
 * {
@@ -28,7 +28,7 @@ body {
     .input-box {
         padding: 10px;
         width: 100%;
-        border: 1px solid lightblue;
+        border: 1px solid #e0e0e0;
         margin-right: 16px;
 
         &:focus {
@@ -40,11 +40,11 @@ body {
         height: 46px;
         width: 120px;
         border: none;
-        background-color: lightblue;
+        background: rgb(0, 38, 160);
         color: white;
 
         &:hover {
-            background-color: lightskyblue;
+            background: rgb(16, 70, 255);
             color: white;
         }
     }
@@ -60,7 +60,7 @@ body {
 }
 
 .todo-item {
-    border: 1px solid lightskyblue;
+    border: 1px solid #e0e0e0;
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -69,7 +69,7 @@ body {
     border-bottom: 0;
 
     &:last-child {
-        border-bottom: 1px solid lightskyblue;
+        border-bottom: 1px solid #e0e0e0;
     }
 
     &.complete {
@@ -103,19 +103,6 @@ body {
     text-align: left;
 }
 
-/* 회원가입/로그인 */
-.form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
-    .form-box {
-        max-width: 480px;
-        width: 100%;
-    }
-}
 
 @media (max-width: 1024px) {
     .todo-container {
@@ -141,4 +128,5 @@ body {
         max-height: calc(100vh - 76px - 32px - 38.8px);
         overflow-y: auto;
     }
+
 }
