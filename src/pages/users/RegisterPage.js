@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import "./users.scss";
 import api from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
+    const navigate = useNavigate();
+
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
@@ -16,6 +19,7 @@ const RegisterPage = () => {
                 password: data.password
             });
             console.log("### 회원가입 성공", response.data);
+            navigate(`/login`);
 
         } catch (error) {
             console.error("### 회원가입 실패", error);
@@ -79,7 +83,7 @@ const RegisterPage = () => {
                     {errors.rePassword && <p className="error-message">{errors.rePassword.message}</p>}
                 </Form.Group>
 
-                <button type="submit">회원가입</button>
+                <button type="submit">가입하기</button>
             </Form>
         </div>
     );
