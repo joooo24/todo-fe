@@ -7,9 +7,14 @@ const RegisterPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rePassword, setRePassword] = useState("");
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
     return (
         <div className="form-container">
-            <Form className="form-box">
+            <Form className="form-box" onSubmit={handleSubmit}>
                 <h1>회원가입</h1>
                 <Form.Group className="mb-3" controlId="formName">
                     <Form.Label>이름</Form.Label>

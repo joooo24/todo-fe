@@ -6,9 +6,14 @@ import "./users.scss";
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
+
     return (
         <div className="form-container">
-            <Form className="form-box">
+            <Form className="form-box" onSubmit={handleSubmit}>
                 <h1>로그인</h1>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>이메일</Form.Label>
