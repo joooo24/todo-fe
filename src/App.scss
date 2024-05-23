@@ -74,7 +74,10 @@ body {
 
     &.complete {
         background-color: #f0f0f0;
-        text-decoration: line-through;
+
+        .todo-task {
+            color: #999999;
+        }
     }
 
     input[type="checkbox"] {
@@ -101,6 +104,24 @@ body {
 .todo-content {
     flex: 1;
     text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    .todo-task {
+        width: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    .todo-by {
+        font-size: 12px;
+        color: #999999;
+        padding-left: 10px;
+    }
 }
 
 // 모달
