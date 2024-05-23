@@ -35,11 +35,6 @@ const LoginPage = ({ setLoginUserData }) => {
         setIsAlertOpen(true);
     };
 
-    // 세션 스토리지에 토큰을 저장
-    const saveTokenToSessionStorage = (token) => {
-        sessionStorage.setItem('token', token);
-    };
-
     const onSubmit = async (data) => {
         // 로그인 로직
         try {
@@ -50,9 +45,11 @@ const LoginPage = ({ setLoginUserData }) => {
 
             if (response.status === 200) {
                 setLoginUserData(response.data.user)
-                saveTokenToSessionStorage(response.data.token)
 
-                // 헤더에 토큰 값 넣기
+                // 세션 스토리지에 토큰을 저장
+                sessionStorage.setItem('token', response.data.token);
+
+                // 헤더에 토큰 값 
                 api.defaults.headers["Authorization"] = "Bearer " + response.data.token;
 
                 navigate(`/`);
