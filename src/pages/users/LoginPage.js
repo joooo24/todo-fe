@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./users.scss";
 import api from "../../utils/api";
 import Modal from "react-modal";
@@ -18,8 +18,7 @@ const AlertModal = ({ isOpen, onClose, message }) => {
     );
 };
 
-const LoginPage = ({ setLoginUserData }) => {
-    const navigate = useNavigate();
+const LoginPage = ({ setLoginUserData, loginUserData }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isAlertOpen, setIsAlertOpen] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
@@ -53,7 +52,6 @@ const LoginPage = ({ setLoginUserData }) => {
                 // 헤더에 토큰 값 저장
                 api.defaults.headers["Authorization"] = "Bearer " + response.data.token;
 
-                navigate(`/`);
             } else {
                 throw new Error(response.message);
             }
@@ -62,6 +60,11 @@ const LoginPage = ({ setLoginUserData }) => {
             handleOpenModal(`${error.message}.`);
         }
     };
+
+    // 유저 정보 있을 경우 Navigate로 페이지 이동
+    if (loginUserData) {
+        return <Navigate to="/" />
+    }
 
     return (
         <div className="form-container">
