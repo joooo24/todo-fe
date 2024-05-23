@@ -18,12 +18,11 @@ const AlertModal = ({ isOpen, onClose, message }) => {
     );
 };
 
-const LoginPage = () => {
+const LoginPage = ({ setLoginUserData }) => {
     const navigate = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isAlertOpen, setIsAlertOpen] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
-    const [loginUser, setLoginUser] = useState(null);
 
     // 모달 닫기
     const handleCloseModal = () => {
@@ -50,10 +49,12 @@ const LoginPage = () => {
             })
 
             if (response.status === 200) {
-                setLoginUser(response.data.user)
+                setLoginUserData(response.data.user)
                 saveTokenToSessionStorage(response.data.token)
+
+                // 헤더에 토큰 값 넣기
                 api.defaults.headers["Authorization"] = "Bearer " + response.data.token;
-                console.log(`### api.defaults.headers["Authorization"]`, api.defaults.headers["Authorization"])
+
                 navigate(`/`);
             }
 
