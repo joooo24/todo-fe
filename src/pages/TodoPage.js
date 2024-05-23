@@ -25,7 +25,7 @@ const TodoPage = () => {
     const addTask = async () => {
         try {
             // 서버에 추가된 todoValue 값을 보냄
-            const response = await api.api("/tasks", { task: todoValue, isComplete: false });
+            const response = await api.post("/tasks", { task: todoValue, isComplete: false });
             console.log("### addTask response", response.data.data);
             getTasks();
         } catch (error) {
