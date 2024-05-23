@@ -44,24 +44,23 @@ const LoginPage = ({ setLoginUserData }) => {
             })
 
             if (response.status === 200) {
+                // 유저 정보 저장
                 setLoginUserData(response.data.user)
 
                 // 세션 스토리지에 토큰을 저장
                 sessionStorage.setItem('token', response.data.token);
 
-                // 헤더에 토큰 값 
+                // 헤더에 토큰 값 저장
                 api.defaults.headers["Authorization"] = "Bearer " + response.data.token;
 
                 navigate(`/`);
+            } else {
+                throw new Error(response.message);
             }
-
-            throw new Error(response.message);
 
         } catch (error) {
             handleOpenModal(`${error.message}.`);
         }
-
-        ;
     };
 
     return (
