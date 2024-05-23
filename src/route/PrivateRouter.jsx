@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 
-const PrivateRouter = ({ user, children }) => {
+const PrivateRouter = ({ loginUserData, children }) => {
     return (
-        user ? children : <Navigate to="/login" />
+        loginUserData ? children : <Navigate to="/login" />
     );
 };
 
