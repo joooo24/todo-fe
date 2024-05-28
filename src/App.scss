@@ -71,10 +71,37 @@ body {
 
 
 .todo-board {
-    h2 {
-        font-family: "Orbit", sans-serif;
-        font-size: 24px;
+    .tab-container{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
         margin: 0 0 10px;
+        h2 {
+            font-family: "Orbit", sans-serif;
+            font-size: 24px;
+            margin-bottom: 0;
+        }
+        .tab-wrap{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            font-size: 16px;
+            margin-bottom: 0;
+            li {
+                margin-left: 10px;
+                list-style: none;
+                cursor: pointer;
+                padding: 2px 6px;
+                border-radius: 50px;
+                font-size: 14px;
+                background-color: #e0e0e0;
+                &.active,
+                &:hover{
+                    color: #ffffff;
+                    background-color: rgb(33, 172, 211);
+                }
+            }
+        }
     }
 }
 
