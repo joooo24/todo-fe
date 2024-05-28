@@ -5,7 +5,7 @@ import LoginPage from "./pages/users/LoginPage";
 import TodoPage from "./pages/TodoPage";
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PrivateRouter from "./route/PrivateRouter";
+import PrivateRoute from "./route/PrivateRoute";
 import api from "./utils/api";
 
 function App() {
@@ -34,9 +34,9 @@ function App() {
         <Routes>
             <Route path="/"
                 element={
-                    <PrivateRouter loginUserData={loginUserData}>
+                    <PrivateRoute loginUserData={loginUserData}>
                         <TodoPage setLoginUserData={setLoginUserData} loginUserData={loginUserData} />
-                    </PrivateRouter>
+                    </PrivateRoute>
                 }
             />
             <Route path="/register" element={<RegisterPage />} />
