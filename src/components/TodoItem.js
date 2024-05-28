@@ -2,11 +2,18 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 
 const TodoItem = ({ tasksData, updateTask, deleteTask }) => {
-    
+
+    //  추가
     const handleCheckboxChange = (taskId, isChecked) => {
         updateTask(taskId, isChecked);
     };
 
+    // 수정
+    const handleEditClick = (taskId) => {
+        deleteTask(taskId);
+    };
+
+    // 삭제
     const handleDeleteClick = (taskId) => {
         deleteTask(taskId);
     };
@@ -34,14 +41,18 @@ const TodoItem = ({ tasksData, updateTask, deleteTask }) => {
                                 )}
                             </span>
                         </div>
-                        <div>
-                            <button
-                                className="button-delete"
-                                onClick={() => handleDeleteClick(todo._id)}
-                            >
-                                삭제
-                            </button>
-                        </div>
+                        <button
+                            className="button-update"
+                            onClick={() => handleEditClick(todo._id)}
+                        >
+                            수정
+                        </button>
+                        <button
+                            className="button-delete"
+                            onClick={() => handleDeleteClick(todo._id)}
+                        >
+                            삭제
+                        </button>
                     </div>
                 ))}
             </Col>

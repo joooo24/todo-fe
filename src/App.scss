@@ -16,40 +16,59 @@ body {
 .todo-container {
     max-width: 1024px;
     margin: 0 auto;
-}
 
-.add-item-wrap {
-    margin-top: 50px;
-    margin-bottom: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    .logout-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 20px;
 
-    .input-box {
-        padding: 10px;
-        width: 100%;
-        border: 1px solid #e0e0e0;
-        margin-right: 16px;
+        .btn-logout {
+            text-decoration: underline;
+            margin-left: 20px;
+            color: #1f1f1f;
+            cursor: pointer;
 
-        &:focus {
-            outline: none;
+            &:hover {
+                color: rgb(255, 109, 109);
+            }
         }
     }
 
-    .button-add {
-        height: 46px;
-        width: 120px;
-        border: none;
-        background: rgb(0, 38, 160);
-        color: white;
+    .add-item-wrap {
+        margin-top: 50px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-        &:hover {
-            background: rgb(16, 70, 255);
+        .input-box {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            margin-right: 16px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .button-add {
+            height: 46px;
+            width: 120px;
+            border: none;
+            background: rgb(0, 38, 160);
             color: white;
-        }
-    }
 
+            &:hover {
+                background: rgb(16, 70, 255);
+                color: white;
+            }
+        }
+
+    }
 }
+
 
 .todo-board {
     h2 {
@@ -86,6 +105,19 @@ body {
         height: 20px;
         margin-right: 16px;
         cursor: pointer;
+    }
+
+    .button-update {
+        background-color: white;
+        border: 1px solid rgb(135, 154, 250);
+        color: rgb(135, 154, 250);
+        margin-right: 4px;
+
+        &:hover {
+            background-color: #333;
+            border: 1px solid #333;
+            color: #ffffff;
+        }
     }
 
     .button-delete {
@@ -183,20 +215,27 @@ button.btn {
 }
 
 @media (max-width: 768px) {
-    .add-item-wrap {
-        margin-top: 0;
-
-        .input-box {
-            margin-right: 0;
+    .todo-container {
+        .logout-wrap {
+            margin-top: 0;
+            margin-bottom: 20px;
         }
 
-        .button-add {
-            width: 90px;
+        .add-item-wrap {
+            margin-top: 0;
+
+            .input-box {
+                margin-right: 0;
+            }
+
+            .button-add {
+                width: 90px;
+            }
         }
     }
 
     .todo-item-wrap {
-        max-height: calc(100vh - 76px - 32px - 38.8px);
+        max-height: calc(100vh - 158.8px - 32px);
         overflow-y: auto;
     }
 
