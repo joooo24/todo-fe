@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import api from "./../utils/api";
 import TodoBoard from './../components/TodoBoard';
 
-
-const TodoPage = () => {
+const TodoPage = ({ loginUserData, setLoginUserData }) => {
 
     // 할일 가져오는 함수
     const [tasks, setTasks] = useState([]);
@@ -54,6 +53,12 @@ const TodoPage = () => {
         }
     }
 
+    // 로그아웃 함수
+    const userLogout = async () => {
+        sessionStorage.clear();
+        setLoginUserData(null) // PrivateRoute 라우팅 시 필요한 키 값
+    }
+
     // 추가 버튼 클릭 시 이벤트 핸들러
     const handleAddClick = () => {
         console.log("### todoValue", todoValue);
@@ -62,6 +67,10 @@ const TodoPage = () => {
     };
     return (
         <div className="todo-container">
+            <div className="logout-wrap">
+                <span className="user-name">{loginUserData.name}님</span>
+                <span onClick={userLogout} className="btn-logout">로그아웃</span>
+            </div>
             <div className="add-item-wrap">
                 <input
                     type="text"

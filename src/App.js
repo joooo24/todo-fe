@@ -35,7 +35,7 @@ function App() {
             <Route path="/"
                 element={
                     <PrivateRouter loginUserData={loginUserData}>
-                        <TodoPage />
+                        <TodoPage setLoginUserData={setLoginUserData} loginUserData={loginUserData} />
                     </PrivateRouter>
                 }
             />
