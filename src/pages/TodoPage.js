@@ -84,7 +84,7 @@ const TodoPage = ({ loginUserData, setLoginUserData }) => {
             </div>
 
             {/* tasks데이터와 updateTask, deleteTask함수 전달 */}
-            <TodoBoard tasks={tasks} updateTask={updateTask} deleteTask={deleteTask} />
+            <TodoBoard loginUserData={loginUserData} tasks={tasks} updateTask={updateTask} deleteTask={deleteTask} />
         </div>
     )
 }

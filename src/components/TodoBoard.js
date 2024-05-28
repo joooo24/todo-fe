@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TodoItem from "./TodoItem";
 
-const TodoBoard = ({ tasks, updateTask, deleteTask }) => {
+const TodoBoard = ({ tasks, updateTask, deleteTask, loginUserData }) => {
     const [filter, setFilter] = useState("All");
 
     const handleFilterChange = (newFilter) => {
@@ -34,7 +34,7 @@ const TodoBoard = ({ tasks, updateTask, deleteTask }) => {
                 </ul>
             </div>
             {tasks.length > 0 ?
-                <TodoItem tasksData={tasks} updateTask={updateTask} deleteTask={deleteTask} filter={filter} />
+                <TodoItem loginUserData={loginUserData} tasksData={tasks} updateTask={updateTask} deleteTask={deleteTask} filter={filter} />
                 :
                 <h2>할 일 목록이 없습니다.</h2>}
         </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
-const TodoItem = ({ tasksData, updateTask, deleteTask, filter }) => {
+const TodoItem = ({ loginUserData, tasksData, updateTask, deleteTask, filter }) => {
     const [editingTaskId, setEditingTaskId] = useState(null);
     const [editValue, setEditValue] = useState("");
 
@@ -77,31 +77,36 @@ const TodoItem = ({ tasksData, updateTask, deleteTask, filter }) => {
                                 </span>
                             )}
                         </div>
+                        
+                        {/*  버튼 */}
+                        {todo.author && todo.author._id === loginUserData._id && (
+                            <>
+                                {/* 수정/저장 버튼 */}
+                                {editingTaskId === todo._id ? (
+                                    <button
+                                        className="button-save"
+                                        onClick={() => handleSaveClick(todo._id)}
+                                    >
+                                        저장
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="button-edit"
+                                        onClick={() => handleEditClick(todo._id, todo.task)}
+                                    >
+                                        수정
+                                    </button>
+                                )}
 
-                        {/* 수정/저장 버튼 */}
-                        {editingTaskId === todo._id ? (
-                            <button
-                                className="button-save"
-                                onClick={() => handleSaveClick(todo._id)}
-                            >
-                                저장
-                            </button>
-                        ) : (
-                            <button
-                                className="button-edit"
-                                onClick={() => handleEditClick(todo._id, todo.task)}
-                            >
-                                수정
-                            </button>
+                                {/* 삭제 버튼 */}
+                                <button
+                                    className="button-delete"
+                                    onClick={() => handleDeleteClick(todo._id)}
+                                >
+                                    삭제
+                                </button>
+                            </>
                         )}
-
-                        {/* 삭제 버튼 */}
-                        <button
-                            className="button-delete"
-                            onClick={() => handleDeleteClick(todo._id)}
-                        >
-                            삭제
-                        </button>
                     </div>
                 ))}
             </Col>
