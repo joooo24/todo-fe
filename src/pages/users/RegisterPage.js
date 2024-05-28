@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import "./users.scss";
 import api from "../../utils/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 
 const AlertModal = ({ isOpen, onClose, message }) => {
@@ -120,8 +120,8 @@ const RegisterPage = () => {
                     가입하기
                 </button>
             </Form>
-
             <div className="notice">비밀번호는 안전하게 암호화되어 저장됩니다.</div>
+            <Link to="/login" className="link-login">로그인 하기</Link>
 
             {/* 모달 */}
             <AlertModal isOpen={isAlertOpen} onClose={handleCloseModal} message={alertMessage} />
