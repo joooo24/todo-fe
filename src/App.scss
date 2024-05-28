@@ -134,7 +134,8 @@ body {
         cursor: pointer;
     }
 
-    .button-update {
+    .button-edit,
+    .button-save {
         background-color: white;
         border: 1px solid rgb(135, 154, 250);
         color: rgb(135, 154, 250);
@@ -166,6 +167,16 @@ body {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
+
+    .input-box {
+        width: calc(100% - 20px);
+        border: 1px solid #e0e0e0;
+        margin-right: 16px;
+
+        &:focus {
+            outline: none;
+        }
+    }
 
     .todo-task {
         width: auto;

@@ -33,10 +33,11 @@ const TodoPage = ({ loginUserData, setLoginUserData }) => {
     };
 
     // 할일 업데이트 함수
-    const updateTask = async (taskId, isChecked) => {
+    const updateTask = async (taskId, updateData) => {
         try {
-            // 서버에 업데이트된 isComplete 값을 보냄
-            await api.put(`/tasks/${taskId}`, { isComplete: isChecked });
+            // 서버에 업데이트된 데이터를 보냄
+            await api.put(`/tasks/${taskId}`, updateData);
+            console.log("!!!!!!! updateData", updateData)
             getTasks();
         } catch (error) {
             console.error('할일 업데이트에 실패했습니다:', error);
